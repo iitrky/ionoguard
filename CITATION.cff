@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "IONOGUARD: Reliable multi user direct to cell satellite assignment under ionospheric scintillation with conformal risk control"
+authors:
+  - family-names: "Arul Dalton"
+    given-names: "G."
+    orcid: "https://orcid.org/0000-0002-5981-7176"
+    affiliation: "Saveetha Engineering College, Chennai, India"
+repository-code: "https://github.com/iitrky/ionoguard"
+license: MIT
+abstract: "Code, trained models and result files for a predictive, reliability-calibrated controller that assigns users to LEO satellites and adapts link MCS for direct-to-cell access under equatorial plasma-bubble scintillation, with conformal risk control, online HARQ-driven risk control and Lagrangian performance bounds."
+keywords:
+  - direct-to-cell
+  - LEO satellite
+  - ionospheric scintillation
+  - conformal risk control
+  - user-satellite assignment
+  - link adaptation
