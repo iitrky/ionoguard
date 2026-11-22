@@ -43,7 +43,7 @@ if 'arch' in which:
     arr([(7.95, 0.9), (7.2, 0.9), (7.2, 1.65)], 'δ_h', 7.27, 1.1, 'left')
     arr([(8.925, 3.8), (8.925, 4.45)])
     ax.text(8.925, 4.5, 'serving satellite,\nMCS or defer', ha='center', va='bottom', fontsize=7.6, **FS)
-    plt.tight_layout(); plt.savefig(F + 'Fig3.png', dpi=600); plt.close()
+    plt.tight_layout(); plt.savefig(F + 'Fig4.png', dpi=600); plt.close()
 
 if 'trade' in which:
     mk = {'MaxElev-FM':'v','A3-OLLA':'s','Risk-ACM':'D','IONOGUARD':'*','IG-noDrift':'1','IG-noCRC':'2','IG-Quantile':'3','IG-noLearn':'4','IG-noSel':'x','Oracle':'P'}
@@ -58,7 +58,7 @@ if 'trade' in which:
     axs[0].set_ylabel('Goodput (Mbit/s)')
     h, l = axs[0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=5, fontsize=7.5, frameon=False, bbox_to_anchor=(0.5, -0.02))
-    plt.tight_layout(rect=(0, 0.14, 1, 1)); plt.savefig(F + 'Fig7.png', dpi=600); plt.close()
+    plt.tight_layout(rect=(0, 0.14, 1, 1)); plt.savefig(F + 'Fig9.png', dpi=600); plt.close()
 
 if 'dist' in which:
     main = ['MaxElev-FM','A3-OLLA','Risk-ACM','IG-Quantile','IONOGUARD','Oracle']
@@ -71,7 +71,7 @@ if 'dist' in which:
     axs[0].set_ylabel('Goodput, disturbed epochs (Mbit/s)', fontsize=8); axs[1].set_ylabel('BFR, disturbed epochs (%)', fontsize=8)
     axs[1].axhline(5, ls='--', c='gray', lw=0.8); axs[1].set_ylim(0, 20); axs[0].legend(fontsize=7.5, loc='upper right')
     for k, ax in enumerate(axs): ax.text(0.02, 0.97, '(%s)' % 'ab'[k], transform=ax.transAxes, va='top', fontsize=9, weight='bold')
-    plt.tight_layout(); plt.savefig(F + 'Fig8.png', dpi=600); plt.close()
+    plt.tight_layout(); plt.savefig(F + 'Fig10.png', dpi=600); plt.close()
 
 if 'sweep' in which:
     E = json.load(open(RES + 'extra_sweeps.json'))
@@ -85,7 +85,7 @@ if 'sweep' in which:
         axs[2].plot([30, 60, 300], [E['lat'][p][k] for k in ['30', '60', '300']], m, label=p)
     axs[2].set_xlabel('Monitor data latency L (s)'); axs[2].set_ylabel('Goodput (Mbit/s)'); axs[2].legend(fontsize=7)
     for k, a in enumerate(axs): a.grid(alpha=.3); a.text(0.03, 0.97, '(%s)' % 'abc'[k], transform=a.transAxes, va='top', fontsize=9, weight='bold')
-    plt.tight_layout(); plt.savefig(F + 'Fig12.png', dpi=600); plt.close()
+    plt.tight_layout(); plt.savefig(F + 'Fig14.png', dpi=600); plt.close()
 
 if 'crc' in which and os.path.exists(RES + 'models_S1.pkl'):
     sys.path.insert(0, '.')
@@ -102,7 +102,7 @@ if 'crc' in which and os.path.exists(RES + 'models_S1.pkl'):
     axs[0].set_yscale('log'); axs[0].legend(fontsize=7); axs[0].grid(alpha=.3, which='both')
     axs[1].set_xlabel('Inflation λ'); axs[1].set_ylabel('Mean scheduled efficiency (b/s/Hz)'); axs[1].grid(alpha=.3); axs[1].legend(fontsize=7)
     for k, ax in enumerate(axs): ax.text(0.02, 0.97, '(%s)' % 'ab'[k], transform=ax.transAxes, va='top', fontsize=9, weight='bold')
-    plt.tight_layout(); plt.savefig(F + 'Fig6.png', dpi=600); plt.close()
+    plt.tight_layout(); plt.savefig(F + 'Fig8.png', dpi=600); plt.close()
     json.dump({'lam': [float(x) for x in lam], 'n': [None if c is None else int(c[0, 3]) for c in curves]}, open(RES + 'crc_calibration.json', 'w'))
 
 if 'trace' in which and os.path.exists(RES + 'trace.pkl'):
@@ -131,6 +131,6 @@ if 'trace' in which and os.path.exists(RES + 'trace.pkl'):
         ax.text(0.01, 0.95, '(%s) %s' % ('abc'[['A3-OLLA', 'IG-noSel', 'IONOGUARD'].index(p)], lab), transform=ax.transAxes, va='top', fontsize=8, weight='bold')
         out[p] = dict(s4=float(tr[sl, 1].mean()), bfr=float(fr), gp=float(gp), s4_all=float(tr[:, 1].mean()))
     axs[0].legend(fontsize=7, loc='upper right', framealpha=0.9); axs[-1].set_xlabel('Local time (h)')
-    plt.tight_layout(); plt.savefig(F + 'Fig9.png', dpi=600); plt.close()
+    plt.tight_layout(); plt.savefig(F + 'Fig11.png', dpi=600); plt.close()
     json.dump(out, open(RES + 'trace_stats_wpc.json', 'w'), indent=1)
 print('figs ok', which)

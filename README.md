@@ -5,7 +5,7 @@
 G. Arul Dalton, Department of Computer Science and Engineering, Saveetha Engineering College, Chennai, India
 (aruldalton@saveetha.ac.in, ORCID [0000-0002-5981-7176](https://orcid.org/0000-0002-5981-7176))
 
-This repository contains the complete implementation, configuration, trained models and result files for the manuscript submitted to the *IEEE Transactions on Aerospace and Electronic Systems*. Every number, table and figure in the paper is produced by the code here.
+This repository contains the complete implementation, configuration, trained models and result files for the manuscript submitted to the *International Journal of Aeronautical and Space Sciences* (Springer). Every number, table and figure in the paper is produced by the code here, and the figure files carry the same numbers as in the paper (Fig. 1–14).
 
 ---
 
@@ -15,13 +15,13 @@ Direct-to-cell (D2C) satellite service connects unmodified smartphones to low Ea
 
 | Stage | What it does | Paper | Code |
 |---|---|---|---|
-| A | Drift-compensated Nadaraya–Watson S4 map from delayed GNSS monitor reports, with self-supervised zonal-drift estimation | Sec. V-A, Eq. (7) | `src/run.py` (`Night`, `future_query`) |
-| B | Gradient-boosted correction of the map at the projected pierce points | Sec. V-B | `src/train.py` (`build_models`) |
-| C | Regime-conditional conformal risk control on the scheduling decision (Algorithm 2) | Sec. V-C, Eqs. (8)–(9), Prop. 1 | `src/train.py` (`build_models`, `apply_lambda`) |
-| — | Online risk control from HARQ ACK/NACK (IONOGUARD-OL) | Sec. V-D, Eqs. (10)–(11), **Theorem 1** | `src/run.py` (`OL_*`), `src/mu.py` (`OL_POL`) |
-| D | Receding-horizon link scoring over the ephemeris (Algorithm 1) | Sec. V-E, Eq. (12) | `src/run.py` (`run_night`) |
-| E | Exact capacity-constrained joint assignment (b-matching, Hungarian method, Algorithm 3) and its proportional-fair form | Sec. V-F/G, Eqs. (13)–(15), Prop. 2 | `src/mu.py` (`joint_assign`, `run_multi`) |
-| — | Lagrangian goodput bound and minimum deferral for any reliable controller | Sec. VI, Eqs. (16)–(17), Props. 3–4 | `src/mu.py` (`lagrangian_bound`, `min_deferral`) |
+| A | Drift-compensated Nadaraya–Watson S4 map from delayed GNSS monitor reports, with self-supervised zonal-drift estimation | Sec. 5.1, Eq. (7) | `src/run.py` (`Night`, `future_query`) |
+| B | Gradient-boosted correction of the map at the projected pierce points | Sec. 5.2 | `src/train.py` (`build_models`) |
+| C | Regime-conditional conformal risk control on the scheduling decision (Algorithm 2) | Sec. 5.3, Eqs. (8)–(9), Prop. 1 | `src/train.py` (`build_models`, `apply_lambda`) |
+| — | Online risk control from HARQ ACK/NACK (IONOGUARD-OL) | Sec. 5.4, Eqs. (10)–(11), **Theorem 1** | `src/run.py` (`OL_*`), `src/mu.py` (`OL_POL`) |
+| D | Receding-horizon link scoring over the ephemeris (Algorithm 1) | Sec. 5.5, Eq. (12) | `src/run.py` (`run_night`) |
+| E | Exact capacity-constrained joint assignment (b-matching, Hungarian method, Algorithm 3) and its proportional-fair form | Secs. 5.6–5.7, Eqs. (13)–(15), Prop. 2 | `src/mu.py` (`joint_assign`, `run_multi`) |
+| — | Lagrangian goodput bound and minimum deferral for any reliable controller | Sec. 6, Eqs. (16)–(17), Props. 3–4 | `src/mu.py` (`lagrangian_bound`, `min_deferral`) |
 
 The physical model (constellation, plasma-bubble field, pierce points, S4 frequency scaling, Nakagami-m × Rician fading, MCS table) is in `src/sim.py` and `src/run.py`.
 
@@ -52,7 +52,7 @@ scripts/
   make_figures.py, make_block_diagrams.py, make_system_diagrams.py, make_mu_diagram.py, make_new_figures.py
   run_main.py, run_mu.py, train_s1.py    earlier 3-night pipeline, kept for reference
 results/                 all result files used in the paper (JSON) and the trained models (pickle)
-figures/                 Fig1.png ... Fig12.png as numbered in the paper, plus two supplementary diagrams
+figures/                 Fig1.png ... Fig14.png, numbered exactly as in the paper (600 dpi)
 run_all.sh               full pipeline
 ```
 
@@ -131,30 +131,31 @@ Training, calibration and test seeds are disjoint. All schemes on a night share 
 
 | Paper item | Content | Produced by | Result file(s) |
 |---|---|---|---|
-| Table I | Comparison with prior work | — (literature) | — |
-| Tables II–III | System and plasma-bubble parameters | `src/sim.py`, `src/run.py` | — |
-| Table IV | Single-UE goodput, BFR, deferral (10 nights, 95% CI) and bound | `run_ext.py`, `summarize_ext.py` | `results/summary.json`, `results/nights/` |
-| Table V | Paired Wilcoxon tests vs. every scheme | `summarize_ext.py` | `results/stats.json` |
-| Table VI | Disturbed-period metrics, window violations, handovers | `run_ext.py` | `results/summary.json` |
-| Table VII | Distance to the bound (Prop. 3) and minimum deferral (Prop. 4) | `run_ext.py` (`bound` jobs) | `results/mu/su_*.json`, `results/summary.json` |
-| Table VIII | Multi-user results, K = 2, 10 nights | `run_ext.py` (`mu` jobs) | `results/mu/mu_*_K2.json`, `results/mu_summary.json` |
-| Table IX | Calibration-shift tests | `run_ext.py` (`ood` jobs) | `results/ood/`, `results/ood_summary.json` |
-| Table X | Online risk control and Theorem 1 certificate | `run_ol.py`, `run_mu_ol.py`, `summarize_ol.py` | `results/ol/`, `results/mu_ol/`, `results/ol_summary.json` |
+| Table 1 | Comparison with prior work | — (literature) | — |
+| Tables 2–3 | System and plasma-bubble parameters | `src/sim.py`, `src/run.py` | — |
+| Table 4 | Single-UE goodput, BFR, deferral (10 nights, 95% CI) and bound | `run_ext.py`, `summarize_ext.py` | `results/summary.json`, `results/nights/` |
+| Table 5 | Paired Wilcoxon tests vs. every scheme | `summarize_ext.py` | `results/stats.json` |
+| Table 6 | Disturbed-period metrics, window violations, handovers | `run_ext.py` | `results/summary.json` |
+| Table 7 | Distance to the bound (Prop. 3) and minimum deferral (Prop. 4) | `run_ext.py` (`bound` jobs) | `results/mu/su_*.json`, `results/summary.json` |
+| Table 8 | Multi-user results, K = 2, 10 nights | `run_ext.py` (`mu` jobs) | `results/mu/mu_*_K2.json`, `results/mu_summary.json` |
+| Table 9 | Calibration-shift tests | `run_ext.py` (`ood` jobs) | `results/ood/`, `results/ood_summary.json` |
+| Table 10 | Online risk control and Theorem 1 certificate | `run_ol.py`, `run_mu_ol.py`, `summarize_ol.py` | `results/ol/`, `results/mu_ol/`, `results/ol_summary.json` |
 | Fig. 1 | D2C scenario | `make_block_diagrams.py` | `figures/Fig1.png` |
 | Fig. 2 | Bubble field and pierce-point tracks | `make_figures.py` | `figures/Fig2.png` |
-| Fig. 3 | IONOGUARD architecture incl. online layer | `make_figures.py` | `figures/Fig3.png` |
-| Fig. 4 | Offline learning and calibration pipeline | `make_block_diagrams.py` | `figures/Fig4.png` |
-| Fig. 5 | Capacity-constrained joint assignment | `make_mu_diagram.py` | `figures/Fig5.png` |
-| Fig. 6 | Regime-conditional calibration risk | `make_figures.py` | `figures/Fig6.png`, `results/crc_calibration.json` |
-| Fig. 7 | Goodput vs. BFR | `make_figures.py` | `figures/Fig7.png` |
-| Fig. 8 | Disturbed-period performance | `make_figures.py` | `figures/Fig8.png` |
-| Fig. 9 | Serving-link S4 traces | `run_trace.py`, `make_figures.py` | `figures/Fig9.png`, `results/trace_stats.json` |
-| Fig. 10 | Goodput vs. bound, dual function | `make_new_figures.py` | `figures/Fig10.png` |
-| Fig. 11 | Multi-user per-site goodput and capacity sweep | `make_new_figures.py` | `figures/Fig11.png` |
-| Fig. 12 | Sensitivity to ε, latency, monitor density | `run_sweeps.py`, `make_figures.py` | `figures/Fig12.png`, `results/extra_sweeps.json` |
-| Sec. VIII-J | Computational cost | `timing.py` | `results/timing.json` |
-
-`figures/FigS1_channel_model.png` and `figures/FigS2_decision_timing.png` are supplementary diagrams of the link model and decision timing.
+| Fig. 3 | Downlink and channel model | `make_system_diagrams.py` | `figures/Fig3.png` |
+| Fig. 4 | Online IONOGUARD architecture incl. online layer | `make_figures.py` | `figures/Fig4.png` |
+| Fig. 5 | Offline learning and calibration pipeline | `make_block_diagrams.py` | `figures/Fig5.png` |
+| Fig. 6 | Timing structure of a decision | `make_system_diagrams.py` | `figures/Fig6.png` |
+| Fig. 7 | Capacity-constrained joint assignment | `make_mu_diagram.py` | `figures/Fig7.png` |
+| Fig. 8 | Regime-conditional calibration risk | `make_figures.py` | `figures/Fig8.png`, `results/crc_calibration.json` |
+| Fig. 9 | Goodput vs. BFR | `make_figures.py` | `figures/Fig9.png` |
+| Fig. 10 | Disturbed-period performance | `make_figures.py` | `figures/Fig10.png` |
+| Fig. 11 | Serving-link S4 traces | `run_trace.py`, `make_figures.py` | `figures/Fig11.png`, `results/trace_stats.json` |
+| Fig. 12 | Goodput vs. bound (16), dual function | `make_new_figures.py` | `figures/Fig12.png` |
+| Fig. 13 | Multi-user per-site goodput and capacity sweep | `make_new_figures.py` | `figures/Fig13.png` |
+| Fig. 14 | Sensitivity to ε, latency, monitor density | `run_sweeps.py`, `make_figures.py` | `figures/Fig14.png`, `results/extra_sweeps.json` |
+| Sec. 8.8 | Ablation study (IG-noDrift, IG-noCRC, IG-Quantile, IG-noLearn, IG-noSel) | `run_ext.py` | `results/summary.json`, `results/stats.json` |
+| Sec. 8.10 | Computational cost | `timing.py` | `results/timing.json` |
 
 ### Result-file format
 

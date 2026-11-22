@@ -32,5 +32,5 @@ box(7.6, 2.35, 2.2, 1.3, 'Hysteresis bonus for\nthe serving satellite:\nW_un = (
 box(7.6, 0.6, 2.2, 1.3, 'Replicate each satellite\nK times; Hungarian\nmethod (Algorithm 3)', '#e8f0fa', fs=7)
 box(10.2, 2.35, 2.1, 1.3, 'Serving satellite per\nuser, then MCS or\ndeferral per link\n(Mondrian CRC)', '#fde3e3', fs=7)
 arr(8.7, 4.1, 8.7, 3.65); arr(8.7, 2.35, 8.7, 1.9); arr(9.8, 1.25, 10.6, 2.35)
-plt.tight_layout(); plt.savefig(os.path.join(F, 'Fig5.png'), dpi=600); plt.close()
+plt.tight_layout(); plt.savefig(os.path.join(F, 'Fig7.png'), dpi=600); plt.close()
 print('ok')

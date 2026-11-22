@@ -32,7 +32,7 @@ axs[1].set_ylim(lo * 0.85, lo * 2.0); axs[1].set_xlim(0.04, 60)
 axs[1].set_xscale('log'); axs[1].set_xlabel('Multiplier μ'); axs[1].set_ylabel('Dual function (Mbit/s)')
 axs[1].legend(fontsize=7, frameon=False); axs[1].grid(alpha=0.3, which='both')
 axs[1].text(0.98, 0.02, '(b)', transform=axs[1].transAxes, ha='right', weight='bold')
-plt.tight_layout(); plt.savefig(os.path.join(FIG, 'Fig10.png'), dpi=600); plt.close()
+plt.tight_layout(); plt.savefig(os.path.join(FIG, 'Fig12.png'), dpi=600); plt.close()
 
 # ---------------- Fig 13: multi-user results
 P = [('A3-OLLA', 's', '#bbbbbb', '//'), ('Risk-ACM', 'D', '#999999', '..'), ('IG-Indep', 'v', '#5d6d7e', 'xx'),
@@ -54,5 +54,5 @@ axs[1].plot(Ks, [SW[K]['bound']['gp'] for K in Ks], 'k--', lw=1, label='Bound (1
 axs[1].set_xticks(Ks); axs[1].set_xlabel('Capacity K (UEs per satellite)'); axs[1].set_ylabel('Mean goodput per UE (Mbit/s)')
 axs[1].legend(fontsize=6.3, frameon=False); axs[1].grid(alpha=0.3)
 axs[1].text(0.02, 0.97, '(b)', transform=axs[1].transAxes, va='top', weight='bold')
-plt.tight_layout(); plt.savefig(os.path.join(FIG, 'Fig11.png'), dpi=600); plt.close()
+plt.tight_layout(); plt.savefig(os.path.join(FIG, 'Fig13.png'), dpi=600); plt.close()
 print('ok')

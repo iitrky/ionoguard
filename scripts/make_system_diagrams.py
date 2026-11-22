@@ -30,7 +30,7 @@ box(ax, 10.05, 0.25, 2.25, 0.9, 'Block success or\nfailure, goodput', '#f2f2f2')
 arr(ax, 11.17, y, 11.17, 1.15)
 box(ax, 0.05, 0.25, 1.95, 0.9, 'IONOGUARD:\nsatellite n, MCS j', '#fde3e3')
 arr(ax, 1.0, 1.15, 1.0, y, ls='--', c='#7d3c98')
-plt.tight_layout(); plt.savefig(F + 'FigS1_channel_model.png', dpi=600); plt.close()
+plt.tight_layout(); plt.savefig(F + 'Fig3.png', dpi=600); plt.close()
 
 # ---------------- Fig 6: timing structure
 fig, ax = plt.subplots(figsize=(7.2, 3.0)); ax.axis('off'); ax.set_xlim(-130, 30); ax.set_ylim(0, 5.2)
@@ -58,5 +58,5 @@ for k in range(20):
 ax.annotate('', xy=(x0 + w + 1, 1.0), xytext=(-2, 3.4), arrowprops=dict(arrowstyle='->', lw=0.8, color='crimson', ls=':'))
 ax.text(-12, 1.6, 'epoch t\n(zoom)', fontsize=7, color='crimson')
 ax.text(x0 + w / 2, 0.15, 'one 1-s epoch = 20 transport blocks of 50 ms (grey: 100-ms handover interruption; red: failed blocks)', ha='center', fontsize=7)
-plt.tight_layout(); plt.savefig(F + 'FigS2_decision_timing.png', dpi=600); plt.close()
+plt.tight_layout(); plt.savefig(F + 'Fig6.png', dpi=600); plt.close()
 print('ok')
